@@ -5,10 +5,11 @@ from geopy.distance import geodesic
 import pandas as pd
 import os
 
-geo_codeA = pd.read_csv("/Users/atwoo/Documents/Fairly_even/data/geocoded_housing_data_codeA_final.csv")
+geo_codeA = pd.read_csv("/Users/atwoo/Documents/Fairly_even/data/interim_data/geocoded_housing_data_codeA_final.csv")
+
 geo_codeA.dropna(axis= 0, subset= ["Latitude", "Longitude"], inplace= True)
 geo_codeA = geo_codeA.reset_index()
-station_data = pd.read_csv("/Users/atwoo/Documents/Fairly_even/data/clean_station_data.csv")
+station_data = pd.read_csv("/Users/atwoo/Documents/Fairly_even/data/processed_data/clean_station_data.csv")
 
 def calculate_distance (latitude_1: float, longitude_1: float, latitude_2: float, longitude_2: float) -> float:
     """Calculate the distance in meters between two latitude and longitude coordinate points.
@@ -58,10 +59,11 @@ def get_nearest_station (property_latitude: float, property_longitude: float, st
 
     return nearest_station, nearest_station_dist
 
-
+# Execute method on dataframe
 geo_codeA[["Nearest_Station", "Station_Distance"]] = geo_codeA.apply(lambda row: pd.Series(get_nearest_station(row["Latitude"], row["Longitude"], station_data)), axis=1)
+geo_codeA = geo_codeA.drop(columns=["index"])
 
 file_name = "combined_station_geocode.csv"
-save_path = os.path.join("/Users/atwoo/Documents/Fairly_even/data",file_name)
+save_path = os.path.join("/Users/atwoo/Documents/Fairly_even/data/interim_data",file_name)
 geo_codeA.to_csv(save_path)
 print("CSV file created!")

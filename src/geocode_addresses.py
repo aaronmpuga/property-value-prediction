@@ -4,7 +4,8 @@ from geopy.geocoders import Nominatim
 import os 
 
 # Path to save backup CSV file every 1800 addresses
-save_directory = "/Users/atwoo/Documents/Fairly_even/data"
+save_directory = "/Users/atwoo/Documents/Fairly_even/data/interim_data"
+
 backup_csv_path = os.path.join(save_directory, "geocoded_addresses_codeA_backup.csv")
 final_csv_path = os.path.join(save_directory, "geocoded_housing_data_codeA_final.csv")
 df_path = os.path.join(save_directory, "housing_data_codeA.csv")
@@ -17,8 +18,8 @@ geo = Nominatim(user_agent="my_housing_project_app")
 address_dict = {}
 
 def getMeridian(street: str, postalcode: int, city: str, index: int) -> tuple:
-    """Convert `text` (bytestring in given encoding or unicode) to unicode.
-
+    """
+    Determines the longitidue and latitude values for a given address
     Parameters
     ----------
     street : str
