@@ -54,7 +54,6 @@ To test the prediction models follow the steps below:
 ## Data 
 - The [raw_data](./data/raw_data) folder is reserved for files and data that were sourced online at the start of the project from sites such as Kaggle and dataNy.gov
    - The Annulized_Rolling_Sale_Update folder taken from [NYC Open Data](https://data.cityofnewyork.us/Housing-Development/NYC-Calendar-Sales-Archive-/uzf5-f8n2/about_data) has the Excel files containing the property sales data across all boroughs in NYC from 2003 - 2015 
-   - 
    -  The [zip_borough.csv](./data/raw_data/zip_borough.csv) file taken from [Kaggle](https://www.kaggle.com/datasets/kimjinyoung/nyc-borough-zip) was used to create the borough column in the housing sales dataframe by mapping each property zipcode to its corresponding borough name
    -  The [MTA_Subway_Stations.csv](./data/raw_data/MTA_Subwa_Stations.csv) file taken from [data.gov](https://catalog.data.gov/dataset/mta-subway-stations) held the train station data used throughout the project
 - The [interim_data](./data/interim_data) folder contains modified/cleaned datasets that have been created based on the inital data in the raw_data folder or from other csv files in the folder. 
